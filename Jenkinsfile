@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Compile') {
       steps {
-        git 'https://github.com/aathithanambi/cicd-k8s-demo.git'
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_password', url: 'https://github.com/aathithanambi/cicd-k8s-demo.git']]])
         script{
                 def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
                 sh "${mvnHome}/bin/mvn package"
