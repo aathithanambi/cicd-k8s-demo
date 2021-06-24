@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "interviewdot/cicd-k8s-demo"
+    registry = "aathithanambi/cicd-k8s-demo"
     registryCredential = 'docker-hub-credentials'
     dockerImage = ''
   }
@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Compile') {
       steps {
-        git 'https://github.com/net-vinothkumar/cicd-k8s-demo.git'
+        git 'https://github.com/aathithanambi/cicd-k8s-demo.git'
         script{
                 def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
                 sh "${mvnHome}/bin/mvn package"
